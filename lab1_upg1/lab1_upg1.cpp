@@ -61,29 +61,24 @@ int main()
         }
     }
 
-    // Pekare och variabler för summa, min och max-värde. En annan metod vore att deklarera
-    // en max-variabel till ett mindre värde än -5000 och sen sätta *p_max = &max
-    //int max = -9999;
-    //int *p_max = &max;
-    int sum = 0;
-    int min = 9999; // Ett värde större än det största möjliga värdet i arrayen
+    // Pekare och variabler för summa, min och max-värde.
     int *p_max = arr;
-    int *p_min = &min;
-    int *p_sum = &sum;
+    int *p_min = arr;
+    // Allokera plats för en int på heapen och lägg pekaren till den på stacken
+    int *p_sum = new int;
 
     // Stega igenom arrayen med pekare
     for(int *p = arr; p != p_end; ++p)
     {
-        // Om *p_max är mindre än aktuellt index i arrayen
+        // Om värdet *p_max pekar på är mindre än aktuellt index i arrayen
         if(*p_max < *p)
-            // Sätt *p_pax till att peka på det aktuella värdet
-            *p_max = *p;
+            // Sätt p_max till att peka på det aktuella indexets adress
+            p_max = p;
         // Och vice versa för *p_min
         if(*p_min > *p)
-            *p_min = *p;
+            p_min = p;
         // Addera arrayens summa och peka på värdet
         *p_sum += *p;
-
     }
 
     // Skriv ut resultatet av beräkningarna
@@ -91,6 +86,11 @@ int main()
     cout << "Minsta tal är: " << *p_min << endl;
     cout << "Största tal är: " << *p_max << endl;
     cout << "Summan är: " << *p_sum << endl;
+
+    // Avallokera minnet för arrayen och integern för summan i omvänd ordning
+    // mot hur de skapades
+    delete p_sum;
+    delete []arr;
 
     return 0;
 }

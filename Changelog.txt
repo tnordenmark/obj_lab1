@@ -1,0 +1,23 @@
+Vi kan väl konstatera att pekare är ganska krångligt innan man förstår det helt och hållet och
+att jag blandade ihop syntaxet för värden och adresser. Att jag glömde att avallokera minnet
+var bara slarv från min sida. Ändringarna enligt diff syntax nedan (- för gammal rad, + för ny rad).
+Även kommentarerna är uppdaterade för att stämma överens med ändringarna. Har även gjort en ändring
+för variabeln som ska lagra summan och allokerat den dynamiskt på heapen med en pekare på stacken.
+Inte helt hundra om det är ett korrekt tillvägagångssätt men det känns mer "pekigt" :-)
+
+ÄNDRINGAR
+=========
+
+Rad 76
+- *p_max = *p;
++ p_max = p;
+
+Rad 79:
+- *p_min = *p;
++ p_min = p;
+
+Rad 91:
++ delete p_sum;
+
+Rad 92:
++ delete arr[];
