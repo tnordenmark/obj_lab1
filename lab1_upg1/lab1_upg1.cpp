@@ -1,13 +1,24 @@
+// lab1_upg1.cpp
+// Program för att utföra ett antal operationer på en array med hjälp av
+// pekare
+// Thomas Nordenmark 2013-01-27
+// Ver 0.1
+//------------------------------------------------------------------------------
 #include <iostream> // cout, cin
 #include <random> // default_random_engine
 #include <functional> // bind
 using namespace std;
 
+// =========================
+// Deklaration av konstanter
+// =========================
 // Intervall för slumpgeneratorn
 const int LOW = -5000;
 const int HIGH = 5000;
 
+// ============
 // Huvudprogram
+// ============
 int main()
 {
     // Initiera slumpdistributörsobjektet generator
